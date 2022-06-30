@@ -341,6 +341,8 @@ namespace CodeCoverageSummary
                               .AppendLine();
             }
 
+            markdownOutput.AppendLine("<details><summary>Code Coverage Report</summary>")
+
             markdownOutput.Append("Package | Line Rate")
                           .Append(hideBranchRate ? string.Empty : " | Branch Rate")
                           .Append(hideComplexity ? string.Empty : " | Complexity")
@@ -362,6 +364,8 @@ namespace CodeCoverageSummary
                           .Append(hideBranchRate ? string.Empty : $" | **{summary.BranchRate * 100:N0}%** ({summary.BranchesCovered} / {summary.BranchesValid})")
                           .Append(hideComplexity ? string.Empty : (summary.Complexity % 1 == 0) ? $" | **{summary.Complexity}**" : $" | **{summary.Complexity:N4}**")
                           .AppendLine(indicators ? $" | {GenerateHealthIndicator(summary.LineRate)}" : string.Empty);
+
+            markdownOutput.AppendLine("</details>")
 
             return markdownOutput.ToString();
         }
