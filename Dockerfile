@@ -7,7 +7,7 @@ COPY ["src/CodeCoverageSummary", "CodeCoverageSummary/"]
 RUN dotnet publish CodeCoverageSummary/CodeCoverageSummary.csproj --configuration Release --no-restore --output /publish
 
 # Label the container
-LABEL maintainer="Irongut <murray.dave@outlook.com>"
+LABEL maintainer="Lucas M. Braz <lmonteirobraz@gmail.com>"
 LABEL repository="https://github.com/lucasmbraz/CodeCoverageSummary"
 LABEL homepage="https://github.com/lucasmbraz/CodeCoverageSummary"
 
@@ -15,7 +15,7 @@ LABEL homepage="https://github.com/lucasmbraz/CodeCoverageSummary"
 LABEL com.github.actions.name="Code Coverage Summary"
 LABEL com.github.actions.description="A GitHub Action that reads Cobertura format code coverage files and outputs a summary."
 LABEL com.github.actions.icon="book-open"
-LABEL com.github.actions.color="purple"
+LABEL com.github.actions.color="orange"
 
 FROM mcr.microsoft.com/dotnet/runtime:6.0 AS final
 WORKDIR /app
