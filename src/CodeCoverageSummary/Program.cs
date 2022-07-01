@@ -301,7 +301,7 @@ namespace CodeCoverageSummary
             }
             else
             {
-                return "✔";
+                return "✅";
             }
         }
 
@@ -352,6 +352,9 @@ namespace CodeCoverageSummary
                           .Append(hideBranchRate ? string.Empty : " | -----------")
                           .Append(hideComplexity ? string.Empty : " | ----------")
                           .AppendLine(indicators ? " | ------" : string.Empty);
+
+            // Sort list of packages
+            summary.Packages.Sort((a, b) => a.Name.CompareTo(b.Name));
 
             foreach (CodeCoverage package in summary.Packages)
             {
