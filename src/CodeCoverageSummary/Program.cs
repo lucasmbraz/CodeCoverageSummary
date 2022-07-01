@@ -341,7 +341,8 @@ namespace CodeCoverageSummary
                               .AppendLine();
             }
 
-            markdownOutput.AppendLine("<details><summary>Code Coverage Report</summary>");
+            markdownOutput.AppendLine($"<details><summary>**Full Report** | **{summary.LineRate * 100:N0}%** ({summary.LinesCovered} / {summary.LinesValid})</summary>");
+            markdownOutput.AppendLine();
 
             markdownOutput.Append("Package | Line Rate")
                           .Append(hideBranchRate ? string.Empty : " | Branch Rate")
@@ -360,12 +361,14 @@ namespace CodeCoverageSummary
                               .AppendLine(indicators ? $" | {GenerateHealthIndicator(package.LineRate)}" : string.Empty);
             }
 
-            markdownOutput.Append($"**Summary** | **{summary.LineRate * 100:N0}%** ({summary.LinesCovered} / {summary.LinesValid})")
-                          .Append(hideBranchRate ? string.Empty : $" | **{summary.BranchRate * 100:N0}%** ({summary.BranchesCovered} / {summary.BranchesValid})")
-                          .Append(hideComplexity ? string.Empty : (summary.Complexity % 1 == 0) ? $" | **{summary.Complexity}**" : $" | **{summary.Complexity:N4}**")
-                          .AppendLine(indicators ? $" | {GenerateHealthIndicator(summary.LineRate)}" : string.Empty);
+            // markdownOutput.Append($"**Summary** | **{summary.LineRate * 100:N0}%** ({summary.LinesCovered} / {summary.LinesValid})")
+            //               .Append(hideBranchRate ? string.Empty : $" | **{summary.BranchRate * 100:N0}%** ({summary.BranchesCovered} / {summary.BranchesValid})")
+            //               .Append(hideComplexity ? string.Empty : (summary.Complexity % 1 == 0) ? $" | **{summary.Complexity}**" : $" | **{summary.Complexity:N4}**")
+            //               .AppendLine(indicators ? $" | {GenerateHealthIndicator(summary.LineRate)}" : string.Empty);
 
+            markdownOutput.AppendLine();
             markdownOutput.AppendLine("</details>");
+            markdownOutput.AppendLine();
 
             return markdownOutput.ToString();
         }
